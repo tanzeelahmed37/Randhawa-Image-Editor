@@ -1,12 +1,11 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 
-// Assume process.env.API_KEY is configured in the environment
-const API_KEY = process.env.API_KEY;
+// The user has provided an API key, so we'll use it directly.
+const API_KEY = "AIzaSyDsU6Ks2cjZ1AkDqVklsSCv3jerr7jmz58";
+
 if (!API_KEY) {
-  // In a real app, you might want to handle this more gracefully,
-  // but for this context, throwing an error is sufficient.
-  throw new Error("API_KEY environment variable not set. Please set it in your environment.");
+  // This error is unlikely to be thrown with a hardcoded key.
+  throw new Error("API_KEY is not set.");
 }
 
 const ai = new GoogleGenAI({ apiKey: API_KEY });
