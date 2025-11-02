@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Modality } from "@google/genai";
 
 // The user has provided an API key, so we'll use it directly.
@@ -50,5 +51,35 @@ export const editImage = async (base64ImageData: string, mimeType: string, promp
         throw new Error(`Failed to generate image: ${error.message}`);
     }
     throw new Error("An unknown error occurred while generating the image.");
+  }
+};
+
+export const createPromptFromImage = async (base64ImageData: string, mimeType: string): Promise<string> => {
+  try {
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: {
+        parts: [
+          {
+            inlineData: {
+              data: base64ImageData,
+              mimeType: mimeType,
+            },
+          },
+          {
+            text: "Please describe this image in a way that could be used as a prompt to edit it. Be descriptive and focus on the main subject and its environment.",
+          },
+        ],
+      },
+    });
+
+    return response.text;
+
+  } catch (error) {
+    console.error("Error creating prompt with Gemini API:", error);
+    if (error instanceof Error) {
+        throw new Error(`Failed to create prompt: ${error.message}`);
+    }
+    throw new Error("An unknown error occurred while creating the prompt.");
   }
 };
