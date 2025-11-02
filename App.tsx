@@ -83,7 +83,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-900 text-white flex flex-col p-4 sm:p-6 lg:p-8">
       <header className="text-center mb-8">
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-          Gemini Image Editor
+          Randhawa Image Editor
         </h1>
         <p className="mt-2 text-lg text-gray-400">
           Transform your images with the power of AI.
